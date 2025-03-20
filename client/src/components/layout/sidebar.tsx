@@ -80,8 +80,7 @@ export function Sidebar({ isOpen }: SidebarProps) {
         <ul className="space-y-1 flex-1">
           {filteredNavItems.map((item) => (
             <li key={item.path}>
-              <Link href={item.path}>
-                <a
+              <Link href={item.path}
                   className={`flex items-center px-4 py-3 text-neutral-400 hover:bg-neutral-100 
                     ${isActive(item.path) 
                       ? 'border-l-4 border-primary bg-blue-50 text-primary font-medium' 
@@ -89,7 +88,6 @@ export function Sidebar({ isOpen }: SidebarProps) {
                 >
                   {item.icon}
                   <span>{item.label}</span>
-                </a>
               </Link>
             </li>
           ))}
