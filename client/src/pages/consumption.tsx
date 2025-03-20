@@ -287,7 +287,7 @@ export default function ConsumptionPage() {
               <SelectValue placeholder="Tous les magasins" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">Tous les magasins</SelectItem>
+              <SelectItem value="all">Tous les magasins</SelectItem>
               {stores?.map((store) => (
                 <SelectItem key={store.id} value={store.id.toString()}>
                   {store.name}
