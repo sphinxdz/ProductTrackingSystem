@@ -135,7 +135,7 @@ export default function Reports() {
     const isInDateRange = consumptionDate >= dateRangeOptions[dateRange].startDate && 
                         consumptionDate <= dateRangeOptions[dateRange].endDate;
     
-    const isInSelectedStore = !selectedStoreId || consumption.storeId === parseInt(selectedStoreId);
+    const isInSelectedStore = selectedStoreId === "all" || consumption.storeId === parseInt(selectedStoreId);
     
     return isInDateRange && isInSelectedStore;
   }) || [];
