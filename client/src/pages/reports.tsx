@@ -28,7 +28,7 @@ type DateRangeType = "7days" | "30days" | "thisMonth" | "lastMonth" | "allTime";
 export default function Reports() {
   const [activeTab, setActiveTab] = useState("consumption");
   const [dateRange, setDateRange] = useState<DateRangeType>("30days");
-  const [selectedStoreId, setSelectedStoreId] = useState<string>("");
+  const [selectedStoreId, setSelectedStoreId] = useState<string>("all");
   
   // Date range options for filtering
   const dateRangeOptions = {

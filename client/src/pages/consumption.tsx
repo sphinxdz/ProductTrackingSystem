@@ -32,7 +32,7 @@ import { fr } from "date-fns/locale";
 
 export default function ConsumptionPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedStoreId, setSelectedStoreId] = useState<string>("");
+  const [selectedStoreId, setSelectedStoreId] = useState<string>("all");
   
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -41,7 +41,7 @@ export default function ConsumptionPage() {
   const { data: consumptions, isLoading: consumptionsLoading } = useQuery<Consumption[]>({
     queryKey: ['/api/consumptions'],
     queryFn: async () => {
-      const url = selectedStoreId 
+      const url = selectedStoreId && selectedStoreId !== 'all'
         ? `/api/consumptions?storeId=${selectedStoreId}` 
         : '/api/consumptions';
       const response = await fetch(url);
@@ -68,7 +68,7 @@ export default function ConsumptionPage() {
   const { data: clients } = useQuery<Client[]>({
     queryKey: ['/api/clients', selectedStoreId],
     queryFn: async () => {
-      const url = selectedStoreId 
+      const url = selectedStoreId && selectedStoreId !== 'all'
         ? `/api/clients?storeId=${selectedStoreId}` 
         : '/api/clients';
       const response = await fetch(url);
@@ -84,7 +84,7 @@ export default function ConsumptionPage() {
   const { data: products } = useQuery<Product[]>({
     queryKey: ['/api/products', selectedStoreId],
     queryFn: async () => {
-      const url = selectedStoreId 
+      const url = selectedStoreId && selectedStoreId !== 'all'
         ? `/api/products?storeId=${selectedStoreId}` 
         : '/api/products';
       const response = await fetch(url);
@@ -174,7 +174,7 @@ export default function ConsumptionPage() {
       clientId: "",
       productId: "",
       toolId: "",
-      storeId: selectedStoreId || "",
+      storeId: selectedStoreId !== "all" ? selectedStoreId : "",
       quantity: "0",
     });
     setDialogOpen(true);
